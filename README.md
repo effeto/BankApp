@@ -3,3 +3,6 @@ Welcome to the Bank App – a test application featuring online banking function
 
 ## Architecture Overview
 The combination of MVVM and Coordinator architecture provides a clear separation of responsibilities, enhances testability, and improves overall code organization.
+
+## Instalation
+Use "Developement" scheme to see mocked data
