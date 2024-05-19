@@ -87,6 +87,12 @@ final class HomeViewModel: ObservableObject {
 // MARK: - Withdraw Logic
 extension HomeViewModel {
     
+    func filterInput(_ input: String) -> String {
+        let allowedCharacters = CharacterSet(charactersIn: "0123456789,")
+        let filtered = input.filter { String($0).rangeOfCharacter(from: allowedCharacters) != nil }
+        return filtered
+    }
+    
     func validateAmountInput(_ input: String) -> String {
         var result = input
         

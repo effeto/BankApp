@@ -17,6 +17,9 @@ struct WithdrawView: View {
             self.continueButton
                 .padding(.bottom, 16)
         }
+        .onDisappear(perform: {
+            self.viewModel.withdrawViewAmount.removeAll()
+        })
     }
     
     // MARK: - Title View
@@ -57,6 +60,11 @@ struct WithdrawView: View {
                      }
                     .onChange(of: viewModel.withdrawViewAmount, { oldValue, newValue in
                         viewModel.withdrawViewAmount = viewModel.validateAmountInput(newValue)
+                        
+                        let filteredValue = viewModel.filterInput(newValue)
+                                   if filteredValue != newValue {
+                                       viewModel.withdrawViewAmount = filteredValue
+                                   }
                     })
                 Spacer()
             }
