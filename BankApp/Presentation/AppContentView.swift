@@ -6,7 +6,7 @@ struct AppContentView: App {
     @ObservedObject var coordinator = BaseCoordinator()
     
     init() {
-        AppTheme.navigationBarColors(background: .white, titleColor: .black, tintColor: .white)
+        AppTheme.navigationBarColors(background: .white, titleColor: .black, tintColor: .green)
         AppTheme.tabbarColors(background: .white, titleColorSelected: .systemBlue, titleColorUnSelected: .systemGray)
     }
     

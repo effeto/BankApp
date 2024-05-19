@@ -7,11 +7,10 @@ struct AdaptiveTextField: View {
     
     var body: some View {
         HStack {
-            TextField("", text: $text)
+            TextField(" ", text: $text)
                 .frame(width: max(textWidth, 50))
                 .font(.system(size: 34, weight: .bold))
                 .background(Color.white)
-                .cornerRadius(5)
                 .onChange(of: text) {
                     self.textWidth = calculateTextWidth(text: text)
                 }
