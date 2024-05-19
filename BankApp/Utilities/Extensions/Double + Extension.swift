@@ -22,15 +22,31 @@ extension Double {
         formatter.groupingSeparator = ","
         formatter.decimalSeparator = "."
         formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 16
         
         if let formattedAmount = formatter.string(from: NSNumber(value: self)) {
-            if formattedAmount.first == "-" {
-                return "-" + "€" + formattedAmount.dropFirst()
+            var amount = formattedAmount
+            
+            if let decimalRange = amount.range(of: "\\.\\d*?0+$", options: .regularExpression) {
+                amount.removeSubrange(decimalRange.lowerBound..<amount.endIndex)
+            }
+            
+            if amount.first == "-" {
+                return "-" + "€" + amount.dropFirst()
             } else {
-                return "€" + formattedAmount
+                return "€" + amount
             }
         } else {
-            return "\(self)"
+            return "\\(self)"
         }
     }
+    
+
+    var removingTrailingZeros: String {
+           let formatter = NumberFormatter()
+           formatter.minimumFractionDigits = 0
+           formatter.maximumFractionDigits = 2
+           formatter.numberStyle = .decimal
+           return formatter.string(from: NSNumber(value: self)) ?? String(self)
+       }
 }

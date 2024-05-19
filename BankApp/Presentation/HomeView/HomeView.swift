@@ -8,7 +8,7 @@ struct HomeView: View {
     var body: some View {
         self.homeView
     }
-
+    
     // MARK: - Home View
     var homeView: some View {
         ScrollView {
@@ -44,6 +44,7 @@ struct HomeView: View {
         }
         .background(content: {
             Color(hex: "#F6F7F9")
+                .ignoresSafeArea()
         })
         .onAppear(perform: {
             self.viewModel.fetchData()
@@ -65,7 +66,7 @@ struct HomeView: View {
                     Image(.icEuFlag)
                     Text("EUR account")
                         .foregroundStyle(Color(hex: "#7E8493"))
-                        .font(.system(size: 15, weight: .bold))
+                        .font(.system(size: 15, weight: .medium))
                     Spacer()
                 }
                 
@@ -91,8 +92,8 @@ struct HomeView: View {
             
             VStack {
                 HStack {
-                    Text("My Cards")
-                        .font(.system(size: 17, weight: .bold))
+                    Text("My cards")
+                        .font(.system(size: 17, weight: .medium))
                     Spacer()
                     
                     if !self.viewModel.cards.isEmpty {
@@ -100,11 +101,12 @@ struct HomeView: View {
                             print("See All Cards")
                         }, label: {
                             Text("See All")
-                                .font(.system(size: 17, weight: .bold))
+                                .font(.system(size: 15, weight: .medium))
                                 .foregroundStyle(.blue)
                         })
                     }
                 }
+                .padding(.bottom, 9)
                 
                 VStack(spacing: 24) {
                     ForEach(last3Cards, id: \.id) { card in
@@ -149,7 +151,7 @@ struct HomeView: View {
             VStack {
                 HStack {
                     Text("Recent transactions")
-                        .font(.system(size: 17, weight: .bold))
+                        .font(.system(size: 17, weight: .medium))
                     Spacer()
                     
                     if !self.viewModel.cardsTransactions.isEmpty {
@@ -157,11 +159,12 @@ struct HomeView: View {
                             print("See All Transactions")
                         }, label: {
                             Text("See All")
-                                .font(.system(size: 17, weight: .bold))
+                                .font(.system(size: 15, weight: .medium))
                                 .foregroundStyle(.blue)
                         })
                     }
                 }
+                .padding(.bottom, 9)
                 
                 VStack(spacing: 24) {
                     ForEach(last3Transactions, id: \.id) { transaction in
@@ -179,6 +182,7 @@ struct HomeView: View {
     private func transactionView(transaction: CardTransactionModel) -> some View {
         let amount = Double(transaction.amount ?? "0")?.convertTransactionDoubleToCurrency()
         let type = transaction.tribeTransactionType ?? "+"
+        let pan = transaction.pan ?? ""
         
         return HStack(alignment: .center) {
             Image(type == "+" ? .icIncome : .icOutcome)
@@ -193,9 +197,13 @@ struct HomeView: View {
                 }
             }
             Spacer()
-            Text("\(amount ?? "0")")
-                .font(.system(size: 15, weight: .medium))
-                .foregroundStyle(type == "+" ? Color(hex: "#00AC4F") : .black)
+            HStack(spacing: 8) {
+                Text("\(amount ?? "0")")
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundStyle(type == "+" ? Color(hex: "#00AC4F") : .black)
+                Image(pan == "+" ? "ic-check" : "")
+                    .frame(width: 20, height: 20)
+            }
             
         }
     }

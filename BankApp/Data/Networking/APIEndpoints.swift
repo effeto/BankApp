@@ -2,12 +2,17 @@
 import Foundation
 
 class APIService {
+    
     static let shared = APIService()
+    
     #if DEBUG
     let baseURL = "debugBase.com"
     #elseif RELEASE
     let baseURL = "releaseBase.com"
     #endif
+    
+    
+    
 }
 
 enum APIServiceError: Error{

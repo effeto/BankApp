@@ -9,155 +9,63 @@ protocol HomeScreenAPICallsProtocol {
 
 // MARK: - Execution
 class HomeScreenAPICalls: HomeScreenAPICallsProtocol {
-    func executeGetBalance(teamID: Int) async throws -> Result<BalanceModel, APIServiceError> {
-        do {
-            let result = try await self.getBalance(teamID: teamID)
-            return .success(result)
-        } catch {
-            switch(error) {
-            case APIServiceError.decodingError:
-                return .failure(.decodingError)
-            case APIServiceError.tokenExpired:
-                return .failure(.tokenExpired)
-            default:
-                return .failure(.statusNotOK)
-            }
-        }
-    }
     
-    func executeGetCards(teamID: Int) async throws -> Result<CardsResponse, APIServiceError> {
-        do {
-            let result = try await self.getCards(teamID: teamID)
-            return .success(result)
-        } catch {
-            switch(error) {
-            case APIServiceError.decodingError:
-                return .failure(.decodingError)
-            case APIServiceError.tokenExpired:
-                return .failure(.tokenExpired)
-            default:
-                return .failure(.statusNotOK)
-            }
+    private func makeAPICall<T: Decodable>(endpoint: String, teamID: Int, mockFunction: (() -> T)?) async throws -> Result<T, APIServiceError> {
+        if let mockData = mockFunction?() {
+            return .success(mockData)
         }
-    }
-    
-    func executeGetCardTransactions(teamID: Int) async throws -> Result<CardTransactionResponse, APIServiceError> {
-        do {
-            let result = try await self.getCardTransactions(teamID: teamID)
-            return .success(result)
-        } catch {
-            switch(error) {
-            case APIServiceError.decodingError:
-                return .failure(.decodingError)
-            case APIServiceError.tokenExpired:
-                return .failure(.tokenExpired)
-            default:
-                return .failure(.statusNotOK)
-            }
+        guard let url = URL(string: endpoint) else {
+            throw APIServiceError.badUrl
         }
-    }
-}
 
-// MARK: - API Calls
-extension HomeScreenAPICalls {
-    private func getBalance(teamID: Int) async throws -> BalanceModel {
-         #if DEBUG
-         return self.getMockBalance()
-         #else
-         guard let url = URL(string:  "\(APIEndpoints.getTotalBalance(teamID: teamID).url)") else {
-             throw APIServiceError.badUrl
-         }
-         
-         print(url)
-         var request = URLRequest(url: url)
-         request.httpMethod = "GET"
-         
-         
-         guard let (data, response) = try? await URLSession.shared.data(for: request), let httpResponse = response as? HTTPURLResponse else {
-             throw APIServiceError.requestError
-         }
-         
-         if httpResponse.statusCode != 200 {
-             print("Status code error: \(httpResponse.statusCode)")
-             throw APIServiceError.statusNotOK
-         } else if httpResponse.statusCode == 401 {
-             throw APIServiceError.tokenExpired
-         }
-         
-         guard let result = try? JSONDecoder().decode(BalanceModel.self, from: data) else {
-             print("JSON decoding error")
-             throw APIServiceError.decodingError
-         }
-         
-         return result
-         #endif
-     }
-     
-    private func getCards(teamID: Int) async throws -> CardsResponse {
-         #if DEBUG
-         return self.getMockCards()
-         #else
-         guard let url = URL(string:  "\(APIEndpoints.getCards(teamID: teamID).url)") else {
-             throw APIServiceError.badUrl
-         }
-         
-         print(url)
-         var request = URLRequest(url: url)
-         request.httpMethod = "GET"
-         
-         
-         guard let (data, response) = try? await URLSession.shared.data(for: request), let httpResponse = response as? HTTPURLResponse else {
-             throw APIServiceError.requestError
-         }
-         
-         if httpResponse.statusCode != 200 {
-             print("Status code error: \(httpResponse.statusCode)")
-             throw APIServiceError.statusNotOK
-         } else if httpResponse.statusCode == 401 {
-             throw APIServiceError.tokenExpired
-         }
-         
-         guard let result = try? JSONDecoder().decode(CardsResponse.self, from: data) else {
-             print("JSON decoding error")
-             throw APIServiceError.decodingError
-         }
-         
-         return result
-         #endif
-     }
-     
-    private func getCardTransactions(teamID: Int) async throws -> CardTransactionResponse {
-         #if DEBUG
-         return self.getMockCardTransactions()
-         #else
-         guard let url = URL(string:  "\(APIEndpoints.getCardTransactions(teamID: teamID).url)") else {
-             throw APIServiceError.badUrl
-         }
-         
-         print(url)
-         var request = URLRequest(url: url)
-         request.httpMethod = "GET"
-         
-         
-         guard let (data, response) = try? await URLSession.shared.data(for: request), let httpResponse = response as? HTTPURLResponse else {
-             throw APIServiceError.requestError
-         }
-         
-         if httpResponse.statusCode != 200 {
-             print("Status code error: \(httpResponse.statusCode)")
-             throw APIServiceError.statusNotOK
-         } else if httpResponse.statusCode == 401 {
-             throw APIServiceError.tokenExpired
-         }
-         
-         guard let result = try? JSONDecoder().decode(CardTransactionResponse.self, from: data) else {
-             print("JSON decoding error")
-             throw APIServiceError.decodingError
-         }
-         
-         return result
-         #endif
-     }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+
+        guard let (data, response) = try? await URLSession.shared.data(for: request), let httpResponse = response as? HTTPURLResponse else {
+            throw APIServiceError.requestError
+        }
+
+        if httpResponse.statusCode != 200 {
+            print("Status code error: \(httpResponse.statusCode)")
+            throw APIServiceError.statusNotOK
+        } else if httpResponse.statusCode == 401 {
+            throw APIServiceError.tokenExpired
+        }
+
+        guard let result = try? JSONDecoder().decode(T.self, from: data) else {
+            print("JSON decoding error")
+            throw APIServiceError.decodingError
+        }
+        
+        return .success(result)
+    }
+
+    func executeGetBalance(teamID: Int) async throws -> Result<BalanceModel, APIServiceError> {
+        #if DEBUG
+        let mockFunction: (() -> BalanceModel)? = getMockBalance
+        #else
+        let mockFunction: (() -> BalanceModel)? = nil
+        #endif
+        return try await makeAPICall(endpoint: APIEndpoints.getTotalBalance(teamID: teamID).url, teamID: teamID, mockFunction: mockFunction)
+    }
+
+    func executeGetCards(teamID: Int) async throws -> Result<CardsResponse, APIServiceError> {
+        #if DEBUG
+        let mockFunction: (() -> CardsResponse)? = getMockCards
+        #else
+        let mockFunction: (() -> CardsResponse)? = nil
+        #endif
+        return try await makeAPICall(endpoint: APIEndpoints.getCards(teamID: teamID).url, teamID: teamID, mockFunction: mockFunction)
+    }
+
+    func executeGetCardTransactions(teamID: Int) async throws -> Result<CardTransactionResponse, APIServiceError> {
+        #if DEBUG
+        let mockFunction: (() -> CardTransactionResponse)? = getMockCardTransactions
+        #else
+        let mockFunction: (() -> CardTransactionResponse)? = nil
+        #endif
+        return try await makeAPICall(endpoint: APIEndpoints.getCardTransactions(teamID: teamID).url, teamID: teamID, mockFunction: mockFunction)
+    }
 }
 
 // MARK: - Mock Data
@@ -177,10 +85,12 @@ extension HomeScreenAPICalls {
     
     private func getMockCardTransactions() -> CardTransactionResponse {
         let transactions = [CardTransactionModel(id: "0", tribeTransactionId: "1111", tribeCardId: 0, amount: "1000", status: "done", tribeTransactionType: "+", schemeId: "", merchantName: "Load", pan: ""),
-                            CardTransactionModel(id: "1", tribeTransactionId: "1111", tribeCardId: 0, amount: "-500", status: "done", tribeTransactionType: "-", schemeId: "", merchantName: "Google", pan: ""),
+                            CardTransactionModel(id: "1", tribeTransactionId: "1111", tribeCardId: 0, amount: "-500", status: "done", tribeTransactionType: "-", schemeId: "", merchantName: "Google", pan: "+"),
                             CardTransactionModel(id: "2", tribeTransactionId: "1111", tribeCardId: 0, amount: "-1299", status: "done", tribeTransactionType: "-", schemeId: "", merchantName: "Google", pan: "")]
         
         return CardTransactionResponse(response: transactions)
     }
 }
+
+
 

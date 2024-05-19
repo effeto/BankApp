@@ -72,7 +72,7 @@ struct WithdrawView: View {
         HStack {
             Text("You have ")
             Text("€\(self.viewModel.totalBalance)")
-                .foregroundColor(.blue) // Set the desired color here
+                .foregroundColor(.blue) 
             Text("\n available in your balance")
                 .multilineTextAlignment(.center)
                 .font(.system(size: 13, weight: .medium))
