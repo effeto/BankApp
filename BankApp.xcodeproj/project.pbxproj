@@ -7,13 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A5598DB92BF886C50078826C /* BankAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DB82BF886C50078826C /* BankAppApp.swift */; };
-		A5598DBB2BF886C50078826C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DBA2BF886C50078826C /* ContentView.swift */; };
+		A5598DB92BF886C50078826C /* AppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DB82BF886C50078826C /* AppContentView.swift */; };
 		A5598DBD2BF886C60078826C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5598DBC2BF886C60078826C /* Assets.xcassets */; };
 		A5598DC02BF886C60078826C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5598DBF2BF886C60078826C /* Preview Assets.xcassets */; };
 		A5598DCA2BF886C60078826C /* BankAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DC92BF886C60078826C /* BankAppTests.swift */; };
 		A5598DD42BF886C60078826C /* BankAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DD32BF886C60078826C /* BankAppUITests.swift */; };
 		A5598DD62BF886C60078826C /* BankAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DD52BF886C60078826C /* BankAppUITestsLaunchTests.swift */; };
+		A5598DE42BF890BD0078826C /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DE32BF890BD0078826C /* UIColor + Extensions.swift */; };
+		A5598DE62BF891050078826C /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DE52BF891050078826C /* Color + Extension.swift */; };
+		A5598DEC2BF8B1060078826C /* Navigation+Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DEB2BF8B1060078826C /* Navigation+Tabbar.swift */; };
+		A5598DEF2BF8B1590078826C /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DEE2BF8B1590078826C /* BaseCoordinator.swift */; };
+		A5598DF12BF8B2990078826C /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DF02BF8B2990078826C /* ViewFactory.swift */; };
+		A5598DF42BF8B5D30078826C /* HomeNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DF32BF8B5D30078826C /* HomeNavigator.swift */; };
+		A5598DF72BF8B95F0078826C /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DF62BF8B95F0078826C /* TabBarView.swift */; };
+		A5598DF92BF8B96C0078826C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DF82BF8B96C0078826C /* HomeViewModel.swift */; };
+		A5598DFC2BF8C6DB0078826C /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DFB2BF8C6DB0078826C /* APIEndpoints.swift */; };
+		A5598DFF2BF8CA300078826C /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598DFE2BF8CA300078826C /* BalanceModel.swift */; };
+		A5598E012BF8CAA20078826C /* CardHolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E002BF8CAA20078826C /* CardHolderModel.swift */; };
+		A5598E032BF8CABF0078826C /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E022BF8CABF0078826C /* CardModel.swift */; };
+		A5598E062BF8CBCB0078826C /* HomeScreenAPICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E052BF8CBCB0078826C /* HomeScreenAPICalls.swift */; };
+		A5598E082BF8CC6E0078826C /* CardTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E072BF8CC6E0078826C /* CardTransactionModel.swift */; };
+		A5598E0A2BF8E37B0078826C /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E092BF8E37B0078826C /* Double + Extension.swift */; };
+		A5598E0C2BF8F9B60078826C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E0B2BF8F9B60078826C /* HomeView.swift */; };
+		A5598E0F2BF8FA6C0078826C /* ComingSoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E0E2BF8FA6C0078826C /* ComingSoonView.swift */; };
+		A5598E122BF8FD700078826C /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E112BF8FD700078826C /* WithdrawView.swift */; };
+		A5598E142BF9C8500078826C /* AdaptiveTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5598E132BF9C8500078826C /* AdaptiveTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +53,7 @@
 
 /* Begin PBXFileReference section */
 		A5598DB52BF886C50078826C /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5598DB82BF886C50078826C /* BankAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppApp.swift; sourceTree = "<group>"; };
-		A5598DBA2BF886C50078826C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A5598DB82BF886C50078826C /* AppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContentView.swift; sourceTree = "<group>"; };
 		A5598DBC2BF886C60078826C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5598DBF2BF886C60078826C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A5598DC52BF886C60078826C /* BankAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +61,25 @@
 		A5598DCF2BF886C60078826C /* BankAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5598DD32BF886C60078826C /* BankAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppUITests.swift; sourceTree = "<group>"; };
 		A5598DD52BF886C60078826C /* BankAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A5598DE32BF890BD0078826C /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
+		A5598DE52BF891050078826C /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
+		A5598DEB2BF8B1060078826C /* Navigation+Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation+Tabbar.swift"; sourceTree = "<group>"; };
+		A5598DEE2BF8B1590078826C /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		A5598DF02BF8B2990078826C /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		A5598DF32BF8B5D30078826C /* HomeNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigator.swift; sourceTree = "<group>"; };
+		A5598DF62BF8B95F0078826C /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		A5598DF82BF8B96C0078826C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A5598DFB2BF8C6DB0078826C /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		A5598DFE2BF8CA300078826C /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
+		A5598E002BF8CAA20078826C /* CardHolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHolderModel.swift; sourceTree = "<group>"; };
+		A5598E022BF8CABF0078826C /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		A5598E052BF8CBCB0078826C /* HomeScreenAPICalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAPICalls.swift; sourceTree = "<group>"; };
+		A5598E072BF8CC6E0078826C /* CardTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransactionModel.swift; sourceTree = "<group>"; };
+		A5598E092BF8E37B0078826C /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
+		A5598E0B2BF8F9B60078826C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A5598E0E2BF8FA6C0078826C /* ComingSoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonView.swift; sourceTree = "<group>"; };
+		A5598E112BF8FD700078826C /* WithdrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawView.swift; sourceTree = "<group>"; };
+		A5598E132BF9C8500078826C /* AdaptiveTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +130,10 @@
 		A5598DB72BF886C50078826C /* BankApp */ = {
 			isa = PBXGroup;
 			children = (
-				A5598DB82BF886C50078826C /* BankAppApp.swift */,
-				A5598DBA2BF886C50078826C /* ContentView.swift */,
-				A5598DBC2BF886C60078826C /* Assets.xcassets */,
+				A5598DE92BF891960078826C /* Presentation */,
+				A5598DEA2BF891DF0078826C /* Data */,
+				A5598DE72BF8915F0078826C /* Utilities */,
+				A5598DE82BF891750078826C /* Resources */,
 				A5598DBE2BF886C60078826C /* Preview Content */,
 			);
 			path = BankApp;
@@ -125,6 +162,135 @@
 				A5598DD52BF886C60078826C /* BankAppUITestsLaunchTests.swift */,
 			);
 			path = BankAppUITests;
+			sourceTree = "<group>";
+		};
+		A5598DE22BF8902A0078826C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DE32BF890BD0078826C /* UIColor + Extensions.swift */,
+				A5598DE52BF891050078826C /* Color + Extension.swift */,
+				A5598E092BF8E37B0078826C /* Double + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A5598DE72BF8915F0078826C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A5598E0D2BF8FA5B0078826C /* Reusables */,
+				A5598DE22BF8902A0078826C /* Extensions */,
+				A5598DEB2BF8B1060078826C /* Navigation+Tabbar.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A5598DE82BF891750078826C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DBC2BF886C60078826C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A5598DE92BF891960078826C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DB82BF886C50078826C /* AppContentView.swift */,
+				A5598DED2BF8B13D0078826C /* AppCordinator */,
+				A5598E152BF9DE3B0078826C /* TabBar */,
+				A5598DF52BF8B9510078826C /* HomeView */,
+				A5598E102BF8FD570078826C /* WithdrawView */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A5598DEA2BF891DF0078826C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DFD2BF8C9B00078826C /* Models */,
+				A5598DFA2BF8C2670078826C /* Networking */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A5598DED2BF8B13D0078826C /* AppCordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DF22BF8B5BC0078826C /* Navigators */,
+				A5598DEE2BF8B1590078826C /* BaseCoordinator.swift */,
+				A5598DF02BF8B2990078826C /* ViewFactory.swift */,
+			);
+			path = AppCordinator;
+			sourceTree = "<group>";
+		};
+		A5598DF22BF8B5BC0078826C /* Navigators */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DF32BF8B5D30078826C /* HomeNavigator.swift */,
+			);
+			path = Navigators;
+			sourceTree = "<group>";
+		};
+		A5598DF52BF8B9510078826C /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DF82BF8B96C0078826C /* HomeViewModel.swift */,
+				A5598E0B2BF8F9B60078826C /* HomeView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		A5598DFA2BF8C2670078826C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A5598E042BF8CB930078826C /* APICalls */,
+				A5598DFB2BF8C6DB0078826C /* APIEndpoints.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A5598DFD2BF8C9B00078826C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DFE2BF8CA300078826C /* BalanceModel.swift */,
+				A5598E002BF8CAA20078826C /* CardHolderModel.swift */,
+				A5598E022BF8CABF0078826C /* CardModel.swift */,
+				A5598E072BF8CC6E0078826C /* CardTransactionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5598E042BF8CB930078826C /* APICalls */ = {
+			isa = PBXGroup;
+			children = (
+				A5598E052BF8CBCB0078826C /* HomeScreenAPICalls.swift */,
+			);
+			path = APICalls;
+			sourceTree = "<group>";
+		};
+		A5598E0D2BF8FA5B0078826C /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+				A5598E0E2BF8FA6C0078826C /* ComingSoonView.swift */,
+				A5598E132BF9C8500078826C /* AdaptiveTextField.swift */,
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
+		A5598E102BF8FD570078826C /* WithdrawView */ = {
+			isa = PBXGroup;
+			children = (
+				A5598E112BF8FD700078826C /* WithdrawView.swift */,
+			);
+			path = WithdrawView;
+			sourceTree = "<group>";
+		};
+		A5598E152BF9DE3B0078826C /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				A5598DF62BF8B95F0078826C /* TabBarView.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +423,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5598DBB2BF886C50078826C /* ContentView.swift in Sources */,
-				A5598DB92BF886C50078826C /* BankAppApp.swift in Sources */,
+				A5598DE42BF890BD0078826C /* UIColor + Extensions.swift in Sources */,
+				A5598DF92BF8B96C0078826C /* HomeViewModel.swift in Sources */,
+				A5598DEF2BF8B1590078826C /* BaseCoordinator.swift in Sources */,
+				A5598E082BF8CC6E0078826C /* CardTransactionModel.swift in Sources */,
+				A5598E062BF8CBCB0078826C /* HomeScreenAPICalls.swift in Sources */,
+				A5598E0C2BF8F9B60078826C /* HomeView.swift in Sources */,
+				A5598DF42BF8B5D30078826C /* HomeNavigator.swift in Sources */,
+				A5598E0A2BF8E37B0078826C /* Double + Extension.swift in Sources */,
+				A5598DE62BF891050078826C /* Color + Extension.swift in Sources */,
+				A5598E032BF8CABF0078826C /* CardModel.swift in Sources */,
+				A5598E0F2BF8FA6C0078826C /* ComingSoonView.swift in Sources */,
+				A5598E122BF8FD700078826C /* WithdrawView.swift in Sources */,
+				A5598E012BF8CAA20078826C /* CardHolderModel.swift in Sources */,
+				A5598E142BF9C8500078826C /* AdaptiveTextField.swift in Sources */,
+				A5598DFC2BF8C6DB0078826C /* APIEndpoints.swift in Sources */,
+				A5598DB92BF886C50078826C /* AppContentView.swift in Sources */,
+				A5598DFF2BF8CA300078826C /* BalanceModel.swift in Sources */,
+				A5598DF72BF8B95F0078826C /* TabBarView.swift in Sources */,
+				A5598DF12BF8B2990078826C /* ViewFactory.swift in Sources */,
+				A5598DEC2BF8B1060078826C /* Navigation+Tabbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +650,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.demyan.BankApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
